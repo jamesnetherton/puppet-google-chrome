@@ -1,0 +1,6 @@
+*.swp
+Gemfile.lock
+spec/fixtures
+pkg
+Dockerfile
+
