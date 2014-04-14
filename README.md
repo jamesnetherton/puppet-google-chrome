@@ -28,7 +28,7 @@ class { 'google_chrome':
 }
 ```
 
-To install unatable or beta versions, set the appropriate version attribute.
+To install unstable or beta versions, set the appropriate version attribute.
 
 ```puppet
 class { 'google_chrome':
