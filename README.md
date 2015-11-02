@@ -1,6 +1,6 @@
-#puppet-google-chrome
+# puppet-google-chrome
 
-##Overview
+## Overview
 
 Puppet module to install the Google Chrome web browser module. Currently supports installation on:
 
@@ -8,14 +8,13 @@ Puppet module to install the Google Chrome web browser module. Currently support
 * Debian / Ubuntu / Mint
 * openSUSE
 
-##Tested on:
+## Tested on:
 
-* Fedora 20
-* Debian Wheezy
-* Ubuntu Saucy Salamander
-* openSUSE 13.1
+* Fedora 20, 21, 22
+* Debian Wheezy / Jessie
+* openSUSE 13.1, 13.2
 
-##Usage
+## Usage
 
 To install the stable version of Google Chrome, include or declare the google_chrome class.
 
@@ -42,26 +41,11 @@ class { 'google_chrome':
 }
 ```
 
-##Mit License
+#### Build
 
-The MIT License (MIT)
-
-Copyright (c) 2014 James Netherton
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-
+Branch | Status |
+---------|---------
+Master | [![Circle CI](https://circleci.com/gh/jamesnetherton/puppet-google-chrome/tree/master.svg?style=svg)](https://circleci.com/gh/jamesnetherton/puppet-google-chrome/tree/master)
+Debian | [![Circle CI](https://circleci.com/gh/jamesnetherton/puppet-google-chrome/tree/master.svg?style=svg)](https://circleci.com/gh/jamesnetherton/puppet-google-chrome/tree/debian)
+Fedora | [![Circle CI](https://circleci.com/gh/jamesnetherton/puppet-google-chrome/tree/master.svg?style=svg)](https://circleci.com/gh/jamesnetherton/puppet-google-chrome/tree/fedora)
+SUSE | [![Circle CI](https://circleci.com/gh/jamesnetherton/puppet-google-chrome/tree/master.svg?style=svg)](https://circleci.com/gh/jamesnetherton/puppet-google-chrome/tree/suse)
