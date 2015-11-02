@@ -3,10 +3,10 @@ require 'spec_helper'
 describe 'google_chrome' do
 
   context 'with Debian osfamily' do
-    let :facts do 
+    let :facts do
       {
           :osfamily  => 'Debian',
-          :lsbdistid => 'Debian', 
+          :lsbdistid => 'Debian',
       }
     end
 
@@ -21,11 +21,11 @@ describe 'google_chrome' do
   end
 
   context 'with Fedora operatingsystem' do
-    let :facts do 
+    let :facts do
       {
           :osfamily        => 'RedHat',
-          :operatingsystem => 'Fedora', 
-          :lsbdistid       => 'Fedora', 
+          :operatingsystem => 'Fedora',
+          :lsbdistid       => 'Fedora',
       }
     end
 
@@ -40,11 +40,11 @@ describe 'google_chrome' do
   end
 
   context 'with Suse osfamily' do
-    let :facts do 
+    let :facts do
       {
           :osfamily        => 'Suse',
-          :operatingsystem => 'OpenSuse', 
-          :lsbdistid       => 'OpenSuse', 
+          :operatingsystem => 'OpenSuse',
+          :lsbdistid       => 'OpenSuse',
       }
     end
 
@@ -59,19 +59,19 @@ describe 'google_chrome' do
   end
 
   context 'with invalid osfamily' do
-    let :facts do 
+    let :facts do
       {
           :osfamily => 'Darwin',
       }
     end
 
     it 'should fail' do
-      expect { subject }.to raise_error(/Unsupported operating system family/)
-    end      
+      expect { should compile }.to raise_error(/Unsupported operating system family/)
+    end
   end
 
   context 'with invalid Redhat operatingsystem' do
-    let :facts do 
+    let :facts do
       {
           :osfamily        => 'RedHat',
           :operatingsystem => 'Centos',
@@ -79,37 +79,37 @@ describe 'google_chrome' do
     end
 
     it 'should fail' do
-      expect { subject }.to raise_error(/Unsupported operating system/)
-    end          
+      expect { should compile }.to raise_error(/Unsupported operating system/)
+    end
   end
 
   context 'with invalid chrome version' do
-    let :facts do 
+    let :facts do
       {
           :osfamily => 'Debian',
       }
     end
 
-    let :params do 
+    let :params do
       {
           :version => 'test-version',
       }
     end
 
     it 'should fail' do
-      expect { subject }.to raise_error(/does not match/)
-    end 
+      expect { should compile }.to raise_error(/does not match/)
+    end
   end
 
   context 'with version => unstable' do
-    let :facts do 
+    let :facts do
       {
           :osfamily  => 'Debian',
-          :lsbdistid => 'Debian', 
+          :lsbdistid => 'Debian',
       }
     end
 
-    let :params do 
+    let :params do
       {
           :version => 'unstable',
       }
