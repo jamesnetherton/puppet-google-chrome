@@ -7,14 +7,7 @@ class google_chrome::params() {
 
   case $::osfamily {
     'RedHat', 'Suse': {
-      case $::operatingsystem {
-        'Fedora', 'OpenSuSE': {
-          $repo_base_url = 'http://dl.google.com/linux/chrome/rpm/stable/$basearch'
-        }
-        default: {
-          fail("Unsupported operating system ${::operatingsystem}")
-        }
-      }
+      $repo_base_url = 'http://dl.google.com/linux/chrome/rpm/stable/$basearch'
     }
     'Debian': {
       $repo_base_url = 'http://dl.google.com/linux/chrome/deb/'
