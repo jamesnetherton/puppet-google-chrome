@@ -70,19 +70,6 @@ describe 'google_chrome' do
     end
   end
 
-  context 'with invalid Redhat operatingsystem' do
-    let :facts do
-      {
-          :osfamily        => 'RedHat',
-          :operatingsystem => 'Centos',
-      }
-    end
-
-    it 'should fail' do
-      expect { should compile }.to raise_error(/Unsupported operating system/)
-    end
-  end
-
   context 'with invalid chrome version' do
     let :facts do
       {
