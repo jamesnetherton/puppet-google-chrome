@@ -1,0 +1,48 @@
+{
+  "name": "jamesnetherton-google_chrome",
+  "version": "0.2.0",
+  "author": "James Netherton",
+  "license": "MIT",
+  "summary": "Installs the Google Chrome web browser",
+  "source": "https://github.com/jamesnetherton/puppet-google-chrome",
+  "project_page": "https://forge.puppetlabs.com/jamesnetherton/google_chrome",
+  "issues_url": "https://github.com/jamesnetherton/puppet-google-chrome/issues",
+  "tags": ["chrome", "google", "browser"],
+  "operatingsystem_support": [
+    {
+    "operatingsystem":"Fedora",
+    "operatingsystemrelease":[ "20", "21", "22", "23" ]
+    },
+    {
+    "operatingsystem":"RedHat",
+    "operatingsystemrelease":[ "7" ]
+    },
+    {
+    "operatingsystem": "CentOS",
+    "operatingsystemrelease": [ "7" ]
+    },
+    {
+    "operatingsystem": "Ubuntu",
+    "operatingsystemrelease": [ "12.04", "14.04" ]
+    },  
+    {
+    "operatingsystem": "Debian",
+    "operatingsystemrelease": [ "7", "8" ]
+    },
+    {
+    "operatingsystem": "SUSE",
+    "operatingsystemrelease": [ "13.1", "13.2" ]
+    }
+   ],
+  "dependencies": [
+    { "name": "puppetlabs/stdlib", "version_requirement": ">=3.2.0 <5.0.0" },
+    { "name": "puppetlabs/apt", "version_requirement": ">=1.4.2 <=2.2.0" },
+    { "name": "darin/zypprepo", "version_requirement": ">=1.0.1" }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">=3.0.0 <5.0.0"
+    }
+  ],
+}
