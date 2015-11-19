@@ -11,6 +11,7 @@ Puppet module to install the Google Chrome web browser module. Currently support
 ## Tested on:
 
 * Fedora 20, 21, 22
+* CentOS 7
 * Debian Wheezy / Jessie
 * openSUSE 13.1, 13.2
 
