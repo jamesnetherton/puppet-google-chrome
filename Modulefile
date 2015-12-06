@@ -1,5 +1,5 @@
 name    'jamesnetherton/google_chrome'
-version '0.2.1'
+version '0.2.2'
 source 'https://github.com/jamesnetherton/puppet-google-chrome'
 author 'jamesnetherton'
 license 'MIT'
