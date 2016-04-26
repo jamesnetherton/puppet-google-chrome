@@ -1,0 +1,11 @@
+FROM centos:latest
+
+ADD . /etc/puppet/modules/google_chrome
+
+RUN yum install https://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm -y && \
+    yum install install git puppet -y && \
+    puppet module install puppetlabs-apt && \
+    puppet module install darin/zypprepo && \
+    puppet apply /etc/puppet/modules/google_chrome/integration-tests/chrome.pp
+
+CMD [ "ls", "-l", "/usr/bin/google-chrome" ]
