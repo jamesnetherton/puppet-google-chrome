@@ -1,5 +1,24 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  override:
+    - docker build -f dockerfiles/centos -t jamesnetherton/google-chrome-centos .
+    - docker build -f dockerfiles/debian -t jamesnetherton/google-chrome-debian .
+    - docker build -f dockerfiles/fedora -t jamesnetherton/google-chrome-fedora .
+    - docker build -f dockerfiles/suse -t jamesnetherton/google-chrome-suse .
+
+test:
+  override:
+    - docker run --rm jamesnetherton/puppet-google-chrome-centos
+    - docker run --rm jamesnetherton/puppet-google-chrome-debian
+    - docker run --rm jamesnetherton/puppet-google-chrome-fedora
+    - docker run --rm jamesnetherton/puppet-google-chrome-suse
+
 test:
   post:
+    - bundle install
     - bundle exec rake spec
     - bundle exec puppet module build
     - mkdir dist && cp pkg/*.tar.gz dist/
