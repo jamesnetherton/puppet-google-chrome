@@ -10,7 +10,7 @@ class google_chrome::params() {
       $repo_base_url = 'http://dl.google.com/linux/chrome/rpm/stable/$basearch'
     }
     'Debian': {
-      $repo_base_url = 'http://dl.google.com/linux/chrome/deb/'
+      $repo_base_url = '[arch=amd64] http://dl.google.com/linux/chrome/deb/'
     }
     default: {
       fail("Unsupported operating system family ${::osfamily}")
