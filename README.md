@@ -47,7 +47,3 @@ class { 'google_chrome':
 Branch | Status |
 ---------|---------
 Master | [![Circle CI](https://circleci.com/gh/jamesnetherton/puppet-google-chrome/tree/master.svg?style=svg)](https://circleci.com/gh/jamesnetherton/puppet-google-chrome/tree/master)
-CentOS | [![Circle CI](https://circleci.com/gh/jamesnetherton/puppet-google-chrome/tree/centos.svg?style=svg)](https://circleci.com/gh/jamesnetherton/puppet-google-chrome/tree/centos)
-Debian | [![Circle CI](https://circleci.com/gh/jamesnetherton/puppet-google-chrome/tree/debian.svg?style=svg)](https://circleci.com/gh/jamesnetherton/puppet-google-chrome/tree/debian)
-Fedora | [![Circle CI](https://circleci.com/gh/jamesnetherton/puppet-google-chrome/tree/fedora.svg?style=svg)](https://circleci.com/gh/jamesnetherton/puppet-google-chrome/tree/fedora)
-SUSE | [![Circle CI](https://circleci.com/gh/jamesnetherton/puppet-google-chrome/tree/suse.svg?style=svg)](https://circleci.com/gh/jamesnetherton/puppet-google-chrome/tree/suse)
