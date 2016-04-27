@@ -1,3 +1,4 @@
+spec/fixtures/
 integration-tests/
 dockerfiles/
 vendor/
