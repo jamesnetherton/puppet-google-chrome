@@ -20,12 +20,30 @@ describe 'google_chrome' do
      end
   end
 
+  context 'does not support RHEL 6' do
+    let :facts do
+      {
+          :osfamily                  => 'RedHat',
+          :operatingsystemmajrelease => 6,
+      }
+    end
+
+    it 'should fail' do
+      expect { should compile }.to raise_error(/Operating system not supported/)
+    end
+  end
+
   context 'with Fedora operatingsystem' do
     let :facts do
       {
           :osfamily        => 'RedHat',
           :operatingsystem => 'Fedora',
           :lsbdistid       => 'Fedora',
+	  :os		   => {
+	    :release  => {
+	      'major' => '7',
+	    },
+	  }
       }
     end
 
