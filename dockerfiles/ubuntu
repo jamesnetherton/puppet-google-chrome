@@ -1,8 +1,9 @@
-FROM opensuse:leap
+FROM ubuntu:16.04
 
 ADD . /etc/puppet/modules/google_chrome
 
-RUN zypper install -y git puppet ca-certificates* tar && \
+RUN apt-get update && \
+    apt-get install git puppet lsb-release --no-install-recommends -y && \
     puppet module install puppetlabs-apt && \
     puppet module install darin/zypprepo && \
     puppet apply /etc/puppet/modules/google_chrome/integration-tests/chrome.pp

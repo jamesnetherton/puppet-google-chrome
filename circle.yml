@@ -8,6 +8,7 @@ dependencies:
     - docker build -f dockerfiles/debian -t jamesnetherton/google-chrome-debian .
     - docker build -f dockerfiles/fedora -t jamesnetherton/google-chrome-fedora .
     - docker build -f dockerfiles/suse -t jamesnetherton/google-chrome-suse .
+    - docker build -f dockerfiles/suse -t jamesnetherton/google-chrome-ubuntu .
 
 test:
   override:
@@ -15,6 +16,7 @@ test:
     - docker run --rm jamesnetherton/puppet-google-chrome-debian
     - docker run --rm jamesnetherton/puppet-google-chrome-fedora
     - docker run --rm jamesnetherton/puppet-google-chrome-suse
+    - docker run --rm jamesnetherton/puppet-google-chrome-ubuntu
 
 test:
   post:
