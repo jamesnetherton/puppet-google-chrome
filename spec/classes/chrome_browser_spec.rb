@@ -20,12 +20,35 @@ describe 'google_chrome' do
      end
   end
 
+  context 'does not support Enterprise Linux 6' do
+    let :facts do
+      {
+	:os => {
+	  :release  => {
+	    'major' => '6',
+	  },
+	},
+      }
+    end
+
+    it do
+      expect {
+        is_expected.to fail(/not supported/)
+      }
+    end
+  end
+
   context 'with Fedora operatingsystem' do
     let :facts do
       {
           :osfamily        => 'RedHat',
           :operatingsystem => 'Fedora',
           :lsbdistid       => 'Fedora',
+	  :os		   => {
+	    :release  => {
+	      'major' => '7',
+	    },
+	  }
       }
     end
 
