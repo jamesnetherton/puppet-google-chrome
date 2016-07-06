@@ -22,6 +22,7 @@ test:
   post:
     - bundle install
     - bundle exec rake spec
+    - bundle exec puppet-lint manifests --no-documentation-check --no-autoloader_layout-check --no-class_inherits_from_params_class-check
     - bundle exec puppet module build
     - mkdir dist && cp pkg/*.tar.gz dist/
 
