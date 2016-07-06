@@ -36,14 +36,10 @@ describe 'google_chrome' do
   context 'with Fedora operatingsystem' do
     let :facts do
       {
-          :osfamily        => 'RedHat',
-          :operatingsystem => 'Fedora',
-          :lsbdistid       => 'Fedora',
-	  :os		   => {
-	    :release  => {
-	      'major' => '7',
-	    },
-	  }
+          :osfamily                  => 'RedHat',
+          :operatingsystem           => 'Fedora',
+          :lsbdistid                 => 'Fedora',
+          :operatingsystemmajrelease => 24,
       }
     end
 
