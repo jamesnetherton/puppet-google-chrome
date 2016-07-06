@@ -7,7 +7,7 @@ class google_chrome::params() {
 
   case $::osfamily {
     'RedHat' : {
-      if $::os[release][major] == '6' {
+      if $::os['release']['major'] == '6' {
 	fail("Operating system not supported by Google Chrome")
       }
       $repo_base_url = 'http://dl.google.com/linux/chrome/rpm/stable/$basearch'
