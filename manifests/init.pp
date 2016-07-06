@@ -26,7 +26,7 @@
 class google_chrome(
   $version  = $google_chrome::params::version
 ) inherits google_chrome::params {
-  
+
   validate_re($version, ['^stable','^unstable','^beta'])
 
   class { 'google_chrome::config': } ->
