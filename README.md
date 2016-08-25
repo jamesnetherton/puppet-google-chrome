@@ -1,5 +1,11 @@
 # puppet-google-chrome
 
+[![CircleCI](https://img.shields.io/circleci/project/jamesnetherton/puppet-google-chrome.svg)](https://circleci.com/gh/jamesnetherton/puppet-google-chrome)
+[![Puppet Forge](https://img.shields.io/puppetforge/f/jamesnetherton/google_chrome.svg?maxAge=600)](https://forge.puppet.com/jamesnetherton/google_chrome)
+[![Puppet Forge](https://img.shields.io/puppetforge/dt/jamesnetherton/google_chrome.svg?maxAge=600)](https://forge.puppet.com/jamesnetherton/google_chrome)
+[![Puppet Forge](https://img.shields.io/puppetforge/rc/jamesnetherton.svg?maxAge=600)](https://forge.puppet.com/jamesnetherton/google_chrome)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=600)](https://opensource.org/licenses/MIT)
+
 ## Overview
 
 Puppet module to install the Google Chrome web browser module. Currently supports installation on:
