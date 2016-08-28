@@ -15,8 +15,8 @@ class google_chrome::config() inherits google_chrome::params {
         location => $google_chrome::params::repo_base_url,
         release  => 'stable',
         key      => {
-          id     => '4CCA1EAF950CEE4AB83976DCA040830F7FAC5991',
-          source => 'http://dl-ssl.google.com/linux/linux_signing_key.pub'
+          id     => $google_chrome::params::repo_gpg_key_id,
+          source => $google_chrome::params::repo_gpg_key,
         },
         repos    => 'main',
         include  => {
