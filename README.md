@@ -48,9 +48,3 @@ class { 'google_chrome':
   version => 'beta',
 }
 ```
-
-#### Build
-
-Branch | Status |
----------|---------
-Master | [![Circle CI](https://circleci.com/gh/jamesnetherton/puppet-google-chrome/tree/master.svg?style=svg)](https://circleci.com/gh/jamesnetherton/puppet-google-chrome/tree/master)
