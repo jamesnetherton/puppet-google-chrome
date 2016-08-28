@@ -2,7 +2,7 @@ FROM fedora:24
 
 ADD . /etc/puppet/modules/google_chrome
 
-RUN dnf install git puppet findutils -y && \
+RUN dnf install git puppet findutils hostname -y && \
     puppet module install puppetlabs-apt && \
     puppet module install darin/zypprepo && \
     puppet apply /etc/puppet/modules/google_chrome/integration-tests/chrome.pp
