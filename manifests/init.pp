@@ -30,5 +30,5 @@ class google_chrome(
   validate_re($version, ['^stable','^unstable','^beta'])
 
   class { 'google_chrome::config': } ->
-  class { 'google_chrome::install' : }
+  class { 'google_chrome::install': }
 }
