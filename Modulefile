@@ -8,5 +8,5 @@ description 'Installs the Google Chrome web browser'
 project_page 'https://github.com/jamesnetherton/puppet-google-chrome'
 
 dependency 'puppetlabs/stdlib', '>=3.2.0 <5.0.0'
-dependency 'puppetlabs/apt', '>=1.4.2 <=2.2.0'
+dependency 'puppetlabs/apt', '>=1.4.2 <3.0.0'
 dependency 'darin/zypprepo', '>=1.0.1'
