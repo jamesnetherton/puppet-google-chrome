@@ -1,6 +1,7 @@
 # puppet-google-chrome
 
 [![CircleCI](https://img.shields.io/circleci/project/jamesnetherton/puppet-google-chrome.svg)](https://circleci.com/gh/jamesnetherton/puppet-google-chrome)
+[![Puppet Forge](https://img.shields.io/puppetforge/v/jamesnetherton/google_chrome.svg)](https://forge.puppet.com/jamesnetherton/google_chrome)
 [![Puppet Forge](https://img.shields.io/puppetforge/f/jamesnetherton/google_chrome.svg?maxAge=600)](https://forge.puppet.com/jamesnetherton/google_chrome)
 [![Puppet Forge](https://img.shields.io/puppetforge/dt/jamesnetherton/google_chrome.svg?maxAge=600)](https://forge.puppet.com/jamesnetherton/google_chrome)
 [![Puppet Forge](https://img.shields.io/puppetforge/rc/jamesnetherton.svg?maxAge=600)](https://forge.puppet.com/jamesnetherton/google_chrome)
