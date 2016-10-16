@@ -14,6 +14,13 @@ describe 'google_chrome' do
     it do
       should contain_class('google_chrome::config')
       should contain_class('google_chrome::install')
+      should contain_file('/etc/default/google-chrome').with(
+        :ensure => 'present',
+        :owner   => 'root',
+        :group   => 'root',
+        :mode    => '0644',
+        :content => "repo_add_once=\"false\"\nrepo_reenable_on_distupgrade=\"true\"\n",
+      )
       should contain_apt__source('google-chrome')
       should contain_package('google-chrome-stable').with(
         :ensure => 'installed',
