@@ -8,7 +8,7 @@ dependencies:
     - docker build -f dockerfiles/debian -t jamesnetherton/google-chrome-debian .
     - docker build -f dockerfiles/fedora -t jamesnetherton/google-chrome-fedora .
     - docker build -f dockerfiles/suse -t jamesnetherton/google-chrome-suse .
-    - docker build -f dockerfiles/suse -t jamesnetherton/google-chrome-ubuntu .
+    - docker build -f dockerfiles/ubuntu -t jamesnetherton/google-chrome-ubuntu .
 
 test:
   override:
