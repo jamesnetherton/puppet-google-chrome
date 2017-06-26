@@ -5,6 +5,7 @@ describe 'google_chrome' do
   context 'with Debian osfamily' do
     let :facts do
       {
+          :os => { :family => 'Debian', :name => 'Debian', :release => { :major => '9', :full => '0' }},
           :osfamily      => 'Debian',
           :lsbdistid     => 'Debian',
           :puppetversion => Puppet.version,
@@ -113,6 +114,7 @@ describe 'google_chrome' do
   context 'with version => unstable' do
     let :facts do
       {
+          :os => { :family => 'Debian', :name => 'Debian', :release => { :major => '9', :full => '0' }},
           :osfamily      => 'Debian',
           :lsbdistid     => 'Debian',
           :puppetversion => Puppet.version,
