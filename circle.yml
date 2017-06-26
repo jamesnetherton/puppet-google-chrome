@@ -4,6 +4,7 @@ machine:
 
 dependencies:
   override:
+    - bundle install
     - docker build -f dockerfiles/centos -t jamesnetherton/google-chrome-centos .
     - docker build -f dockerfiles/debian -t jamesnetherton/google-chrome-debian .
     - docker build -f dockerfiles/fedora -t jamesnetherton/google-chrome-fedora .
@@ -17,11 +18,10 @@ test:
     - docker run --rm jamesnetherton/google-chrome-fedora
     - docker run --rm jamesnetherton/google-chrome-suse
     - docker run --rm jamesnetherton/google-chrome-ubuntu
+    - bundle exec rake spec
+    - bundle exec puppet-lint manifests --fail-on-warnings --no-documentation-check --no-autoloader_layout-check --no-class_inherits_from_params_class-check
 
   post:
-    - bundle install
-    - bundle exec rake spec
-    - bundle exec puppet-lint manifests --no-documentation-check --no-autoloader_layout-check --no-class_inherits_from_params_class-check
     - bundle exec puppet module build
     - mkdir dist && cp pkg/*.tar.gz dist/
 
