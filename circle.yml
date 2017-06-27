@@ -25,6 +25,11 @@ test:
     - bundle exec puppet module build
     - mkdir dist && cp pkg/*.tar.gz dist/
 
+
+deployment:
+  release:
+    tag: /v[0-9]+(\.[0-9]+)*/
+
 general:
   artifacts:
     - "dist"
