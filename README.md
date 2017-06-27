@@ -1,6 +1,6 @@
 # puppet-google-chrome
 
-[![CircleCI](https://img.shields.io/circleci/project/jamesnetherton/puppet-google-chrome.svg)](https://circleci.com/gh/jamesnetherton/puppet-google-chrome)
+[![CircleCI](https://img.shields.io/circleci/project/jamesnetherton/puppet-google-chrome/master.svg)](https://circleci.com/gh/jamesnetherton/puppet-google-chrome/tree/master)
 [![Puppet Forge](https://img.shields.io/puppetforge/v/jamesnetherton/google_chrome.svg)](https://forge.puppet.com/jamesnetherton/google_chrome)
 [![Puppet Forge](https://img.shields.io/puppetforge/f/jamesnetherton/google_chrome.svg?maxAge=600)](https://forge.puppet.com/jamesnetherton/google_chrome)
 [![Puppet Forge](https://img.shields.io/puppetforge/dt/jamesnetherton/google_chrome.svg?maxAge=600)](https://forge.puppet.com/jamesnetherton/google_chrome)
@@ -17,7 +17,7 @@ Puppet module to install the Google Chrome web browser module. Currently support
 
 ## Tested on:
 
-* Fedora 20, 21, 22, 23, 24
+* Fedora 20, 21, 22, 23, 24, 25
 * CentOS 7
 * Debian Wheezy / Jessie
 * openSUSE 13.1, 13.2, 42.1
