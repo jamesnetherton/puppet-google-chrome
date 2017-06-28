@@ -12,7 +12,7 @@ class google_chrome::config() inherits google_chrome::params {
     'RedHat': {
       yumrepo { $google_chrome::params::repo_name:
         name     => $google_chrome::params::repo_name,
-        descr    => 'Google Chrome Repo',
+        descr    => $google_chrome::params::repo_name,
         enabled  => 1,
         gpgcheck => 1,
         baseurl  => $google_chrome::params::repo_base_url,
