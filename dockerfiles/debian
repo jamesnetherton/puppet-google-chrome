@@ -1,11 +1,13 @@
-FROM debian:jessie
+FROM debian:stretch
 
-ADD . /etc/puppet/modules/google_chrome
+ADD . /google_chrome
+
+WORKDIR /google_chrome
 
 RUN apt-get update && \
-    apt-get install git puppet lsb-release --no-install-recommends -y && \
-    puppet module install puppetlabs-apt && \
-    puppet module install darin/zypprepo && \
-    puppet apply --verbose --debug /etc/puppet/modules/google_chrome/integration-tests/chrome.pp
+    apt-get install git puppet lsb-release gpg --no-install-recommends -y && \
+    puppet module build && \    
+    puppet module install pkg/jamesnetherton-google_chrome-$(ls pkg/jamesnetherton-google_chrome-*.tar.gz | sed 's/.*\([0-9].[0-9].[0-9]\).*/\1/p' | head -n1).tar.gz && \
+    puppet apply --verbose --debug /google_chrome/integration-tests/chrome.pp
 
 CMD [ "ls", "-l", "/usr/bin/google-chrome" ]
