@@ -1,0 +1,201 @@
+defaults: &DEFAULT
+  working_directory: ~/puppet-google-chrome
+  docker:
+    - image: circleci/ruby
+
+version: 2.0
+jobs:
+  checkout_code:
+    <<: *DEFAULT
+    steps:
+      - checkout
+      - run:
+          name: save SHA to a file
+          command: echo $CIRCLE_SHA1 > .circle-sha
+      - save_cache:
+          key: v1-repo-{{ checksum ".circle-sha" }}
+          paths:
+            - ~/puppet-google-chrome
+
+  bundle_dependencies:
+    <<: *DEFAULT
+    steps:
+      - run:
+          name: save SHA to a file
+          command: echo $CIRCLE_SHA1 > .circle-sha
+      - restore_cache:
+          keys:
+            - v1-repo-{{ checksum ".circle-sha" }}
+      - restore_cache:
+          keys:
+            - v1-bundle-{{ checksum "Gemfile.lock" }}
+      - run: bundle install --path vendor/bundle
+      - save_cache:
+          key: v1-bundle-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ~/puppet-google-chrome/vendor/bundle
+
+  rake_test:
+    <<: *DEFAULT
+    steps:
+      - run:
+          name: save SHA to a file
+          command: echo $CIRCLE_SHA1 > .circle-sha
+      - restore_cache:
+          keys:
+            - v1-repo-{{ checksum ".circle-sha" }}
+      - restore_cache:
+          keys:
+            - v1-bundle-{{ checksum "Gemfile.lock" }}
+      - run: bundle --path vendor/bundle
+      - run: bundle exec rake spec
+
+  puppet_lint:
+    <<: *DEFAULT
+    steps:
+      - run:
+          name: save SHA to a file
+          command: echo $CIRCLE_SHA1 > .circle-sha
+      - restore_cache:
+          keys:
+            - v1-repo-{{ checksum ".circle-sha" }}
+      - restore_cache:
+          keys:
+            - v1-bundle-{{ checksum "Gemfile.lock" }}
+      - run: bundle --path vendor/bundle
+      - run: bundle exec puppet-lint manifests --fail-on-warnings --no-documentation-check --no-autoloader_layout-check --no-class_inherits_from_params_class-check
+
+  integration_test_centos:
+    <<: *DEFAULT
+    steps:
+      - setup_remote_docker
+      - run:
+          name: save SHA to a file
+          command: echo $CIRCLE_SHA1 > .circle-sha
+      - restore_cache:
+          keys:
+            - v1-repo-{{ checksum ".circle-sha" }}
+      - run:
+          command: |
+            docker build -f dockerfiles/centos -t jamesnetherton/google-chrome-centos .
+            docker run --rm jamesnetherton/google-chrome-centos
+
+  integration_test_debian:
+    <<: *DEFAULT
+    steps: 
+      - setup_remote_docker
+      - run:
+          name: save SHA to a file
+          command: echo $CIRCLE_SHA1 > .circle-sha
+      - restore_cache:
+          keys:
+            - v1-repo-{{ checksum ".circle-sha" }}
+      - run:
+          command: |
+            docker build -f dockerfiles/centos -t jamesnetherton/google-chrome-debian .
+            docker run --rm jamesnetherton/google-chrome-debian
+
+  integration_test_fedora:
+    <<: *DEFAULT
+    steps:
+      - setup_remote_docker
+      - run:
+          name: save SHA to a file
+          command: echo $CIRCLE_SHA1 > .circle-sha
+      - restore_cache:
+          keys:
+            - v1-repo-{{ checksum ".circle-sha" }}
+      - run:
+          command: |
+            docker build -f dockerfiles/centos -t jamesnetherton/google-chrome-fedora .
+            docker run --rm jamesnetherton/google-chrome-fedora
+
+  integration_test_suse:
+    <<: *DEFAULT
+    steps:
+      - setup_remote_docker
+      - run:
+          name: save SHA to a file
+          command: echo $CIRCLE_SHA1 > .circle-sha
+      - restore_cache:
+          keys:
+            - v1-repo-{{ checksum ".circle-sha" }}
+      - run:
+          command: |
+            docker build -f dockerfiles/centos -t jamesnetherton/google-chrome-suse .
+            docker run --rm jamesnetherton/google-chrome-suse
+
+  integration_test_ubuntu:
+    <<: *DEFAULT
+    steps:
+      - setup_remote_docker
+      - run:
+          name: save SHA to a file
+          command: echo $CIRCLE_SHA1 > .circle-sha
+      - restore_cache:
+          keys:
+            - v1-repo-{{ checksum ".circle-sha" }}
+      - run:
+          command: |
+            docker build -f dockerfiles/centos -t jamesnetherton/google-chrome-ubuntu .
+            docker run --rm jamesnetherton/google-chrome-ubuntu
+
+  puppet_build:
+    <<: *DEFAULT
+    steps:
+      - run:
+          name: save SHA to a file
+          command: echo $CIRCLE_SHA1 > .circle-sha
+      - restore_cache:
+          keys:
+            - v1-repo-{{ checksum ".circle-sha" }}
+      - restore_cache:
+          keys:
+            - v1-bundle-{{ checksum "Gemfile.lock" }}
+      - run: bundle --path vendor/bundle
+      - run: 
+          command: |
+            bundle exec puppet module build
+            mkdir dist && cp pkg/*.tar.gz dist/
+      - store_artifacts:
+          path: dist
+
+workflows:
+  version: 2
+  build-test-and-package:
+    jobs:
+      - checkout_code
+      - bundle_dependencies:
+          requires:
+            - checkout_code
+      - rake_test:
+          requires:
+            - bundle_dependencies
+      - puppet_lint:
+          requires:
+            - bundle_dependencies
+      - integration_test_centos:
+          requires:
+            - checkout_code
+      - integration_test_debian:
+          requires:
+            - checkout_code
+      - integration_test_fedora:
+          requires:
+            - checkout_code
+      - integration_test_suse:
+          requires:
+            - checkout_code
+      - integration_test_ubuntu:
+          requires:
+            - checkout_code
+      - puppet_build:
+          requires:
+            - checkout_code
+            - rake_test
+            - puppet_lint
+            - integration_test_centos
+            - integration_test_debian
+            - integration_test_fedora
+            - integration_test_suse
+            - integration_test_ubuntu
