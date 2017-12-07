@@ -1,5 +1,5 @@
-class google_chrome::install() inherits google_chrome::params {
-  package { "${google_chrome::params::package_name}-${google_chrome::version}":,
-    ensure => $google_chrome::params::ensure,
+class google_chrome::install() inherits google_chrome {
+  package { "${google_chrome::package_name}-${google_chrome::version}":,
+    ensure => $google_chrome::ensure,
   }
 }
