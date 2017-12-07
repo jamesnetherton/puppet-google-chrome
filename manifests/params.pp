@@ -1,5 +1,5 @@
 class google_chrome::params() {
-  $ensure           = installed
+  $ensure           = 'installed'
   $version          = 'stable'
   $package_name     = 'google-chrome'
   $repo_gpg_key     = 'https://dl.google.com/linux/linux_signing_key.pub'
