@@ -2,6 +2,6 @@ fixtures:
   repositories:
     "stdlib": "https://github.com/puppetlabs/puppetlabs-stdlib"
     "apt": "https://github.com/puppetlabs/puppetlabs-apt"
-    "zypprepo": "https://github.com/deadpoint/puppet-zypprepo"
+    "zypprepo": "https://github.com/voxpupuli/puppet-zypprepo"
   symlinks:
     "google_chrome": "#{source_dir}"
