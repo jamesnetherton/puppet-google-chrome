@@ -6,6 +6,14 @@
 #
 # [*version*]
 #   Chrome version to install. Can be one of 'stable' (the default), 'unstable' or 'beta'.
+#   Default: 'stable'
+#
+# @param [Optional[String]] defaults_proxy_pac_url
+#   Specify proxy autoconfiguration URL.
+#   Overrides any environment variables or settings picked via
+#   the options dialog.
+#   Default: undef
+#
 #
 # === Examples
 #
@@ -45,6 +53,7 @@ class google_chrome(
   $repo_gpg_key_id  = $google_chrome::params::repo_gpg_key_id,
   $repo_name        = $google_chrome::params::repo_name,
   $defaults_file    = $google_chrome::params::defaults_file,
+  Optional[String] $defaults_proxy_pac_url = undef,
   $repo_base_url    = $google_chrome::params::repo_base_url
 ) inherits google_chrome::params {
 

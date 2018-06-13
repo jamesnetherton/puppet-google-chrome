@@ -5,7 +5,9 @@ class google_chrome::config() inherits google_chrome {
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    content => "repo_add_once=\"false\"\nrepo_reenable_on_distupgrade=\"true\"\n",
+    content => epp('google_chrome/defaults-google-chrome.epp',{
+      proxy_pac_url => $google_chrome::defaults_proxy_pac_url,
+    }),
   }
 
   case $::osfamily {

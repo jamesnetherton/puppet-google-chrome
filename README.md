@@ -25,6 +25,25 @@ Puppet module to install the Google Chrome web browser module. Currently support
 
 ## Usage
 
+### Class: `google_chrome`
+
+Installs Google Chrome
+
+**Parameters within `google_chrome`**
+
+####`version`
+Chrome version to install. Can be one of 'stable' (the default), 'unstable' or 'beta'.
+Default: 'stable'
+
+####`defaults_proxy_pac_url`
+
+Data type: *Optional[String]*
+
+Specify proxy autoconfiguration URL.  Overrides any environment variables or settings picked via the options dialog.  
+Default: undef
+
+### Examples
+
 To install the stable version of Google Chrome, include or declare the google_chrome class.
 
 ```puppet
