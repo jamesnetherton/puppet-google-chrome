@@ -5,7 +5,7 @@ class google_chrome::config() inherits google_chrome {
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    content => epp('google_chrome/defaults-google-chrome.epp',{
+    content => epp('google_chrome/defaults-google-chrome.epp', {
       proxy_pac_url => $google_chrome::defaults_proxy_pac_url,
     }),
   }

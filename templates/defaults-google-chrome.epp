@@ -6,4 +6,3 @@ repo_reenable_on_distupgrade="true"
 <%- if $proxy_pac_url { -%>
 proxy-pac-url="<%= $proxy_pac_url %>"
 <%- } -%>
-
