@@ -7,6 +7,6 @@ WORKDIR /google_chrome
 RUN zypper install -y git puppet ca-certificates* tar && \
     puppet module build && \    
     puppet module install pkg/jamesnetherton-google_chrome-$(ls pkg/jamesnetherton-google_chrome-*.tar.gz | sed 's/.*\([0-9].[0-9].[0-9]\).*/\1/p' | head -n1).tar.gz && \
-    puppet apply --verbose --debug /google_chrome/integration-tests/chrome.pp
+    puppet apply --verbose --debug --parser future /google_chrome/integration-tests/chrome.pp
 
 CMD [ "ls", "-l", "/usr/bin/google-chrome" ]
