@@ -25,25 +25,6 @@ Puppet module to install the Google Chrome web browser module. Currently support
 
 ## Usage
 
-### Class: `google_chrome`
-
-Installs Google Chrome
-
-**Parameters within `google_chrome`**
-
-####`version`
-Chrome version to install. Can be one of 'stable' (the default), 'unstable' or 'beta'.
-Default: 'stable'
-
-####`defaults_proxy_pac_url`
-
-Data type: *Optional[String]*
-
-Specify proxy autoconfiguration URL.  Overrides any environment variables or settings picked via the options dialog.  
-Default: undef
-
-### Examples
-
 To install the stable version of Google Chrome, include or declare the google_chrome class.
 
 ```puppet
@@ -72,13 +53,33 @@ To modify the full set of default parameters.
 
 ```puppet
 class { 'google_chrome':
-  ensure           => 'installed',
-  version          => 'unstable',
-  package_name     => 'google-chrome',
-  repo_gpg_key     => 'https://dl.google.com/linux/linux_signing_key.pub',
-  repo_gpg_key_id  => '4CCA1EAF950CEE4AB83976DCA040830F7FAC5991',
-  repo_name        => 'google-chrome',
-  defaults_file    => '/etc/default/google-chrome',
-  repo_base_url    => 'http://dl.google.com/linux/chrome/rpm/stable/x86_64'
+  ensure                 => 'installed',
+  version                => 'unstable',
+  package_name           => 'google-chrome',
+  repo_gpg_key           => 'https://dl.google.com/linux/linux_signing_key.pub',
+  repo_gpg_key_id        => '4CCA1EAF950CEE4AB83976DCA040830F7FAC5991',
+  repo_name              => 'google-chrome',
+  defaults_file          => '/etc/default/google-chrome',
+  defaults_proxy_pac_url => 'http://foo/bar/proxy.pac',
+  repo_base_url          => 'http://dl.google.com/linux/chrome/rpm/stable/x86_64'
 }
+```
+
+## Contributing
+
+Fork this repository and create a feature branch to work on your changes. Before submitting a pull request:
+
+* Please run [tests](https://github.com/jamesnetherton/puppet-google-chrome/blob/master/spec/classes/chrome_browser_spec.rb) and if necessary add test coverage for your changes:
+
+```
+rake spec
+```
+
+* Run lint checks:
+
+```
+puppet-lint manifests --fail-on-warnings \
+                      --no-documentation-check \
+                      --no-autoloader_layout-check \
+                      --no-class_inherits_from_params_class-check
 ```
