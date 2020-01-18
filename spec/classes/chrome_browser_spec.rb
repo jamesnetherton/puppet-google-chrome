@@ -26,6 +26,7 @@ describe 'google_chrome' do
         :location => '[arch=amd64] http://dl.google.com/linux/chrome/deb/',
         :release  => 'stable',
         :key      => {
+          'ensure' => 'absent',
           'id'     => '4CCA1EAF950CEE4AB83976DCA040830F7FAC5991',
           'source' => 'https://dl.google.com/linux/linux_signing_key.pub',
         },
@@ -34,6 +35,8 @@ describe 'google_chrome' do
           'src' => false
         }
       )
+      should contain_archive('/etc/apt/trusted.gpg.d/google-chrome.asc')
+
       should contain_package('google-chrome-stable').with(
         :ensure => 'installed',
       )
@@ -155,6 +158,7 @@ describe 'google_chrome' do
         :location => '[arch=amd64] http://dl.google.com/linux/chrome/deb/',
         :release  => 'stable',
         :key      => {
+          'ensure' => 'absent',
           'id'     => '0AAA0AAF000AAA0AA00000AAA000000A0AAA0000',
           'source' => 'http://test.org/gpg.key',
         },
@@ -163,6 +167,7 @@ describe 'google_chrome' do
           'src' => false
         }
       )
+      should contain_archive('/etc/apt/trusted.gpg.d/fake-google-chrome.asc')
       should contain_package('fake-google-chrome-unstable').with(
         :ensure => 'installed',
       )

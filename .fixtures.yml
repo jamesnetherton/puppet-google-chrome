@@ -3,5 +3,6 @@ fixtures:
     "stdlib": "https://github.com/puppetlabs/puppetlabs-stdlib"
     "apt": "https://github.com/puppetlabs/puppetlabs-apt"
     "zypprepo": "https://github.com/voxpupuli/puppet-zypprepo"
+    "archive": "https://github.com/voxpupuli/puppet-archive"
   symlinks:
     "google_chrome": "#{source_dir}"
