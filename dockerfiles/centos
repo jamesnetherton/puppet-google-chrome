@@ -1,11 +1,11 @@
-FROM centos:latest
+FROM centos:7
 
 ADD . /google_chrome
 
 WORKDIR /google_chrome
 
 RUN yum install https://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm -y && \
-    yum install install git puppet -y && \
+    yum install git puppet -y && \
     puppet module build && \    
     puppet module install pkg/jamesnetherton-google_chrome-$(ls pkg/jamesnetherton-google_chrome-*.tar.gz | sed 's/.*\([0-9].[0-9].[0-9]\).*/\1/p' | head -n1).tar.gz && \
     puppet apply --verbose --debug --parser future /google_chrome/integration-tests/chrome.pp

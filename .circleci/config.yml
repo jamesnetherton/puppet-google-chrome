@@ -92,7 +92,7 @@ jobs:
             - v1-repo-{{ checksum ".circle-sha" }}
       - run:
           command: |
-            docker build -f dockerfiles/centos -t jamesnetherton/google-chrome-debian .
+            docker build -f dockerfiles/debian -t jamesnetherton/google-chrome-debian .
             docker run --rm jamesnetherton/google-chrome-debian
 
   integration_test_fedora:
@@ -107,7 +107,7 @@ jobs:
             - v1-repo-{{ checksum ".circle-sha" }}
       - run:
           command: |
-            docker build -f dockerfiles/centos -t jamesnetherton/google-chrome-fedora .
+            docker build -f dockerfiles/fedora -t jamesnetherton/google-chrome-fedora .
             docker run --rm jamesnetherton/google-chrome-fedora
 
   integration_test_suse:
@@ -122,7 +122,7 @@ jobs:
             - v1-repo-{{ checksum ".circle-sha" }}
       - run:
           command: |
-            docker build -f dockerfiles/centos -t jamesnetherton/google-chrome-suse .
+            docker build -f dockerfiles/suse -t jamesnetherton/google-chrome-suse .
             docker run --rm jamesnetherton/google-chrome-suse
 
   integration_test_ubuntu:
@@ -137,7 +137,7 @@ jobs:
             - v1-repo-{{ checksum ".circle-sha" }}
       - run:
           command: |
-            docker build -f dockerfiles/centos -t jamesnetherton/google-chrome-ubuntu .
+            docker build -f dockerfiles/ubuntu -t jamesnetherton/google-chrome-ubuntu .
             docker run --rm jamesnetherton/google-chrome-ubuntu
 
   puppet_build:
