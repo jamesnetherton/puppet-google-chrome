@@ -13,13 +13,13 @@ class google_chrome::params() {
       if $::operatingsystemmajrelease == 6 {
         fail('Operating system not supported by Google Chrome')
       }
-      $repo_base_url = 'http://dl.google.com/linux/chrome/rpm/stable/x86_64'
+      $repo_base_url = 'https://dl.google.com/linux/chrome/rpm/stable/x86_64'
     }
     'Suse' : {
-      $repo_base_url = 'http://dl.google.com/linux/chrome/rpm/stable/x86_64'
+      $repo_base_url = 'https://dl.google.com/linux/chrome/rpm/stable/x86_64'
     }
     'Debian': {
-      $repo_base_url = '[arch=amd64] http://dl.google.com/linux/chrome/deb/'
+      $repo_base_url = '[arch=amd64] https://dl.google.com/linux/chrome/deb/'
     }
     default: {
       fail("Unsupported operating system family ${::osfamily}")
