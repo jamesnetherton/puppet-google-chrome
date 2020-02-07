@@ -23,7 +23,7 @@ describe 'google_chrome' do
         :content => "repo_add_once=\"false\"\nrepo_reenable_on_distupgrade=\"true\"\n",
       )
       should contain_apt__source('google-chrome').with(
-        :location => '[arch=amd64] http://dl.google.com/linux/chrome/deb/',
+        :location => '[arch=amd64] https://dl.google.com/linux/chrome/deb/',
         :release  => 'stable',
         :key      => {
           'ensure' => 'absent',
@@ -155,7 +155,7 @@ describe 'google_chrome' do
         :content => "repo_add_once=\"false\"\nrepo_reenable_on_distupgrade=\"true\"\nproxy-pac-url=\"http://test.org/proxy.pac\"\n",
       )
       should contain_apt__source('fake-google-chrome').with(
-        :location => '[arch=amd64] http://dl.google.com/linux/chrome/deb/',
+        :location => '[arch=amd64] https://dl.google.com/linux/chrome/deb/',
         :release  => 'stable',
         :key      => {
           'ensure' => 'absent',
