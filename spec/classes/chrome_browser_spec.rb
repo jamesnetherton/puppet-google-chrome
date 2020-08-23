@@ -15,6 +15,13 @@ describe 'google_chrome' do
     it do
       should contain_class('google_chrome::config')
       should contain_class('google_chrome::install')
+      should contain_archive('/tmp/google-chrome.asc').with(
+        :source  => 'https://dl.google.com/linux/linux_signing_key.pub',
+        :creates => '/etc/apt/trusted.gpg.d/google-chrome.gpg',
+      )
+      should contain_exec('gpg -o /etc/apt/trusted.gpg.d/google-chrome.gpg --dearmor /tmp/google-chrome.asc').with(
+        :creates => '/etc/apt/trusted.gpg.d/google-chrome.gpg',
+      )
       should contain_file('/etc/default/google-chrome').with(
         :ensure  => 'present',
         :owner   => 'root',
@@ -25,18 +32,11 @@ describe 'google_chrome' do
       should contain_apt__source('google-chrome').with(
         :location => '[arch=amd64] https://dl.google.com/linux/chrome/deb/',
         :release  => 'stable',
-        :key      => {
-          'ensure' => 'absent',
-          'id'     => '4CCA1EAF950CEE4AB83976DCA040830F7FAC5991',
-          'source' => 'https://dl.google.com/linux/linux_signing_key.pub',
-        },
         :repos    => 'main',
         :include  => {
           'src' => false
         }
       )
-      should contain_archive('/etc/apt/trusted.gpg.d/google-chrome.asc')
-
       should contain_package('google-chrome-stable').with(
         :ensure => 'installed',
       )
@@ -147,8 +147,15 @@ describe 'google_chrome' do
     it do
       should contain_class('google_chrome::config')
       should contain_class('google_chrome::install')
+      should contain_archive('/tmp/fake-google-chrome.asc').with(
+        :source  => 'http://test.org/gpg.key',
+        :creates => '/etc/apt/trusted.gpg.d/fake-google-chrome.gpg',
+      )
+      should contain_exec('gpg -o /etc/apt/trusted.gpg.d/fake-google-chrome.gpg --dearmor /tmp/fake-google-chrome.asc').with(
+        :creates => '/etc/apt/trusted.gpg.d/fake-google-chrome.gpg',
+      )
       should contain_file('/etc/default/fake-google-chrome').with(
-        :ensure => 'present',
+        :ensure  => 'present',
         :owner   => 'root',
         :group   => 'root',
         :mode    => '0644',
@@ -157,17 +164,11 @@ describe 'google_chrome' do
       should contain_apt__source('fake-google-chrome').with(
         :location => '[arch=amd64] https://dl.google.com/linux/chrome/deb/',
         :release  => 'stable',
-        :key      => {
-          'ensure' => 'absent',
-          'id'     => '0AAA0AAF000AAA0AA00000AAA000000A0AAA0000',
-          'source' => 'http://test.org/gpg.key',
-        },
         :repos    => 'main',
         :include  => {
           'src' => false
         }
       )
-      should contain_archive('/etc/apt/trusted.gpg.d/fake-google-chrome.asc')
       should contain_package('fake-google-chrome-unstable').with(
         :ensure => 'installed',
       )
@@ -199,7 +200,7 @@ describe 'google_chrome' do
       should contain_class('google_chrome::config')
       should contain_class('google_chrome::install')
       should contain_file('/etc/default/fake-google-chrome').with(
-        :ensure => 'present',
+        :ensure  => 'present',
         :owner   => 'root',
         :group   => 'root',
         :mode    => '0644',
@@ -243,7 +244,7 @@ describe 'google_chrome' do
       should contain_class('google_chrome::config')
       should contain_class('google_chrome::install')
       should contain_file('/etc/default/fake-google-chrome').with(
-        :ensure => 'present',
+        :ensure  => 'present',
         :owner   => 'root',
         :group   => 'root',
         :mode    => '0644',
