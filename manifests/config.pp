@@ -22,8 +22,6 @@ class google_chrome::config() inherits google_chrome {
       }
     }
     'Debian': {
-      Exec['apt_update'] -> Package["${google_chrome::package_name}-${google_chrome::version}"]
-
       ensure_packages(['gnupg'])
 
       archive { "/tmp/${google_chrome::repo_name}.asc":
@@ -31,16 +29,14 @@ class google_chrome::config() inherits google_chrome {
         creates => "/etc/apt/trusted.gpg.d/${google_chrome::repo_name}.gpg",
         require => [Package['gnupg']]
       }
-
-      exec { "gpg -o /etc/apt/trusted.gpg.d/${google_chrome::repo_name}.gpg --dearmor /tmp/${google_chrome::repo_name}.asc":
+      -> exec { "gpg -o /etc/apt/trusted.gpg.d/${google_chrome::repo_name}.gpg --dearmor /tmp/${google_chrome::repo_name}.asc":
         path    => ['/usr/bin', '/usr/sbin',],
         creates => "/etc/apt/trusted.gpg.d/${google_chrome::repo_name}.gpg",
         require => [
           Archive["/tmp/${google_chrome::repo_name}.asc"],
         ]
       }
-
-      apt::source { $google_chrome::repo_name:
+      -> apt::source { $google_chrome::repo_name:
         location => $google_chrome::repo_base_url,
         release  => 'stable',
         repos    => 'main',
@@ -48,6 +44,7 @@ class google_chrome::config() inherits google_chrome {
           'src' => false
         },
       }
+      -> Exec['apt_update'] -> Package["${google_chrome::package_name}-${google_chrome::version}"]
     }
     'Suse': {
       zypprepo { $google_chrome::repo_name:
