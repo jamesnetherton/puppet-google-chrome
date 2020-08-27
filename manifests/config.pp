@@ -24,15 +24,10 @@ class google_chrome::config() inherits google_chrome {
     'Debian': {
       Exec['apt_update'] -> Package["${google_chrome::package_name}-${google_chrome::version}"]
 
-      archive{"/etc/apt/trusted.gpg.d/${google_chrome::repo_name}.asc":
-        source => $google_chrome::repo_gpg_key,
-      }
-
       apt::source { $google_chrome::repo_name:
         location => $google_chrome::repo_base_url,
         release  => 'stable',
         key      => {
-          ensure => absent,
           id     => $google_chrome::repo_gpg_key_id,
           source => $google_chrome::repo_gpg_key,
         },
