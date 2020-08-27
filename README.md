@@ -50,6 +50,7 @@ class { 'google_chrome':
   package_name           => 'google-chrome',
   repo_gpg_key           => 'https://dl.google.com/linux/linux_signing_key.pub',
   repo_gpg_key_id        => '4CCA1EAF950CEE4AB83976DCA040830F7FAC5991',
+  repo_gpg_key_options   => 'http-proxy="http://proxyuser:proxypass@example.org:3128"',
   repo_name              => 'google-chrome',
   defaults_file          => '/etc/default/google-chrome',
   defaults_proxy_pac_url => 'http://foo/bar/proxy.pac',

@@ -26,17 +26,15 @@ describe 'google_chrome' do
         :location => '[arch=amd64] https://dl.google.com/linux/chrome/deb/',
         :release  => 'stable',
         :key      => {
-          'ensure' => 'absent',
-          'id'     => '4CCA1EAF950CEE4AB83976DCA040830F7FAC5991',
-          'source' => 'https://dl.google.com/linux/linux_signing_key.pub',
+          'id'      => '4CCA1EAF950CEE4AB83976DCA040830F7FAC5991',
+          'source'  => 'https://dl.google.com/linux/linux_signing_key.pub',
+          'options' => :undef,
         },
         :repos    => 'main',
         :include  => {
           'src' => false
         }
       )
-      should contain_archive('/etc/apt/trusted.gpg.d/google-chrome.asc')
-
       should contain_package('google-chrome-stable').with(
         :ensure => 'installed',
       )
@@ -138,6 +136,7 @@ describe 'google_chrome' do
         :package_name           => 'fake-google-chrome',
         :repo_gpg_key           => 'http://test.org/gpg.key',
         :repo_gpg_key_id        => '0AAA0AAF000AAA0AA00000AAA000000A0AAA0000',
+        :repo_gpg_key_options   => 'http-proxy="http://proxyuser:proxypass@example.org:3128"',
         :repo_name              => 'fake-google-chrome',
         :defaults_file          => '/etc/default/fake-google-chrome',
         :defaults_proxy_pac_url => 'http://test.org/proxy.pac'
@@ -158,16 +157,15 @@ describe 'google_chrome' do
         :location => '[arch=amd64] https://dl.google.com/linux/chrome/deb/',
         :release  => 'stable',
         :key      => {
-          'ensure' => 'absent',
-          'id'     => '0AAA0AAF000AAA0AA00000AAA000000A0AAA0000',
-          'source' => 'http://test.org/gpg.key',
+          'id'      => '0AAA0AAF000AAA0AA00000AAA000000A0AAA0000',
+          'source'  => 'http://test.org/gpg.key',
+          'options' => 'http-proxy="http://proxyuser:proxypass@example.org:3128"',
         },
         :repos    => 'main',
         :include  => {
           'src' => false
         }
       )
-      should contain_archive('/etc/apt/trusted.gpg.d/fake-google-chrome.asc')
       should contain_package('fake-google-chrome-unstable').with(
         :ensure => 'installed',
       )
