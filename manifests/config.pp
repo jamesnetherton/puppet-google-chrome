@@ -28,8 +28,9 @@ class google_chrome::config() inherits google_chrome {
         location => $google_chrome::repo_base_url,
         release  => 'stable',
         key      => {
-          id     => $google_chrome::repo_gpg_key_id,
-          source => $google_chrome::repo_gpg_key,
+          id      => $google_chrome::repo_gpg_key_id,
+          source  => $google_chrome::repo_gpg_key,
+          options => $google_chrome::repo_gpg_key_options,
         },
         repos    => 'main',
         include  => {
