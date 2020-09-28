@@ -286,7 +286,7 @@ describe 'google_chrome' do
     end
 
     it 'should fail' do
-      expect { should compile }.to raise_error(/does not match/)
+      expect { should compile }.to raise_error(/Enum/)
     end
   end  
 end
