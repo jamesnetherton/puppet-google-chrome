@@ -79,7 +79,7 @@ describe 'google_chrome' do
         :descr    => 'google-chrome',
         :enabled  => 1,
         :gpgcheck => 1,
-        :baseurl  => 'http://dl.google.com/linux/chrome/rpm/stable/x86_64',
+        :baseurl  => 'https://dl.google.com/linux/chrome/rpm/stable/x86_64',
         :gpgkey   => 'https://dl.google.com/linux/linux_signing_key.pub',
       )
       should contain_package('google-chrome-stable').with(
@@ -109,7 +109,7 @@ describe 'google_chrome' do
       )
       should contain_zypprepo('google-chrome').with(
         :name     => 'google-chrome',
-        :baseurl  => 'http://dl.google.com/linux/chrome/rpm/stable/x86_64',
+        :baseurl  => 'https://dl.google.com/linux/chrome/rpm/stable/x86_64',
         :enabled  => 1,
         :gpgcheck => 0,
         :type     => 'rpm-md',
@@ -208,7 +208,7 @@ describe 'google_chrome' do
         :descr    => 'fake-google-chrome',
         :enabled  => 1,
         :gpgcheck => 1,
-        :baseurl  => 'http://dl.google.com/linux/chrome/rpm/stable/x86_64',
+        :baseurl  => 'https://dl.google.com/linux/chrome/rpm/stable/x86_64',
         :gpgkey   => 'http://test.org/gpg.key',
       )
       should contain_package('fake-google-chrome-unstable').with(
@@ -249,7 +249,7 @@ describe 'google_chrome' do
       )
       should contain_zypprepo('fake-google-chrome').with(
         :name     => 'fake-google-chrome',
-        :baseurl  => 'http://dl.google.com/linux/chrome/rpm/stable/x86_64',
+        :baseurl  => 'https://dl.google.com/linux/chrome/rpm/stable/x86_64',
         :enabled  => 1,
         :gpgcheck => 0,
         :type     => 'rpm-md',
