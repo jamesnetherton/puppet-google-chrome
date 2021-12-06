@@ -1,3 +1,5 @@
+:rotating_light: **THIS PROJECT IS NO LONGER MAINTAINED** :rotating_light:
+
 # puppet-google-chrome
 
 ![Puppet Google Chrome CI](https://github.com/jamesnetherton/puppet-google-chrome/workflows/Puppet%20Google%20Chrome%20CI/badge.svg?branch=master)
@@ -56,23 +58,4 @@ class { 'google_chrome':
   defaults_proxy_pac_url => 'http://foo/bar/proxy.pac',
   repo_base_url          => 'https://dl.google.com/linux/chrome/rpm/stable/x86_64'
 }
-```
-
-## Contributing
-
-Fork this repository and create a feature branch to work on your changes. Before submitting a pull request:
-
-* Please run [tests](https://github.com/jamesnetherton/puppet-google-chrome/blob/master/spec/classes/chrome_browser_spec.rb) and if necessary add test coverage for your changes:
-
-```
-rake spec
-```
-
-* Run lint checks:
-
-```
-puppet-lint manifests --fail-on-warnings \
-                      --no-documentation-check \
-                      --no-autoloader_layout-check \
-                      --no-class_inherits_from_params_class-check
 ```
