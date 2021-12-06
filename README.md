@@ -54,7 +54,7 @@ class { 'google_chrome':
   repo_name              => 'google-chrome',
   defaults_file          => '/etc/default/google-chrome',
   defaults_proxy_pac_url => 'http://foo/bar/proxy.pac',
-  repo_base_url          => 'http://dl.google.com/linux/chrome/rpm/stable/x86_64'
+  repo_base_url          => 'https://dl.google.com/linux/chrome/rpm/stable/x86_64'
 }
 ```
 
